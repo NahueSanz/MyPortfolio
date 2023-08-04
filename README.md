@@ -1,2 +1,2 @@
 # MyPortfolio
-Carta introductoria a de mi persona :D
+Carta introductoria a mi persona :D
