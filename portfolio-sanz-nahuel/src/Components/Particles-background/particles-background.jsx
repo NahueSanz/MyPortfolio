@@ -1,15 +1,10 @@
-// particlesBackground.js
 import { useCallback } from "react";
 import Particles from "react-particles";
 import { loadSlim } from "tsparticles-slim";
 
 const particlesBackground = () => {
   const particlesInit = useCallback(async (engine) => {
-    console.log(engine);
-    // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-    // starting from v2 you can add only the features you need reducing the bundle size
-    //await loadFull(engine);
+
     await loadSlim(engine);
   }, []);
 
@@ -35,7 +30,7 @@ const particlesBackground = () => {
             direction: "bottom",
             enable: true,
             outModes: {
-              default: "out", 
+              default: "out",
             },
             random: false,
             speed: 1,
@@ -60,10 +55,10 @@ const particlesBackground = () => {
         },
         detectRetina: true,
         emitters: {
-          direction: "bottom", 
+          direction: "bottom",
           rate: {
-            delay: 0.1, 
-            quantity: 3, 
+            delay: 0.1,
+            quantity: 3,
           },
           size: {
             width: 100,

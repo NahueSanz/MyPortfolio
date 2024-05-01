@@ -1,34 +1,85 @@
 import { Container, Row, Col } from "react-bootstrap";
-import "./Home.css";
-import img from "../../assets/Foto.portfolio.jpeg";
+import imgPerfil from "../../assets/Foto.portfolio.jpeg";
+import imgBlueGuy from "../../assets/pc.guy.png";
+import { useState, useEffect } from "react";
 
 function home() {
+  const jobTitles = ["Full Stack Developer", "Web Designer", "Problem Solver"];
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const [currentTitle, setCurrentTitle] = useState(
+    jobTitles[currentTitleIndex]
+  );
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const typingSpeed = isDeleting ? 75 : 200;
+
+    const timeout = setTimeout(() => {
+      setCurrentTitle((prevTitle) => {
+        const targetTitle = jobTitles[currentTitleIndex];
+        const textLength = prevTitle.length;
+
+        if (!isDeleting) {
+          if (textLength === targetTitle.length) {
+            setIsDeleting(true);
+          }
+        } else {
+          if (textLength === 0) {
+            setIsDeleting(false);
+            setCurrentTitleIndex(
+              (prevIndex) => (prevIndex + 1) % jobTitles.length
+            );
+            return "";
+          }
+        }
+
+        const newText = isDeleting
+          ? prevTitle.substring(0, textLength - 1)
+          : targetTitle.substring(0, textLength + 1);
+
+        return newText;
+      });
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [currentTitle, currentTitleIndex, isDeleting]);
+
   return (
     <section>
       <Container fluid className="home-section" id="home">
-        <Row>
-          <Col md={7} className="home-header">
-            <h1 style={{ paddingBottom: 15 }} className="heading">
+        <Row className="justify-content-md-center custom-row">
+          <Col md={7} className="home-about-description">
+            <h1 className="heading">
               Hi!{" "}
               <span className="wave" role="img" aria-labelledby="wave">
                 👋🏻
               </span>
             </h1>
-            <h1 className="heading-name">
+            <h1 className="heading">
               I'M
               <span className="purple"> Nahuel</span>
             </h1>
-
+            <div id="job-title" className="purple">
+              {currentTitle}
+            </div>
             <div style={{ marginTop: "10em" }}></div>
           </Col>
+          <Col md={5} className="imgContainerBlueGuy">
+            <img
+              src={imgBlueGuy}
+              alt="imgPerfil"
+              className="imgPerfilBlue"
+            ></img>
+          </Col>
         </Row>
+        <div style={{ marginTop: "15em" }}></div>
         <Row>
           <Col md={7} className="home-about-description">
             <h1 style={{ fontSize: "2.6em" }}>
               Allow me to<span className="purple"> introduce </span> myself
             </h1>
 
-            <p className="home-about-body">
+            <p className="introduction">
               My name is
               <i>
                 <b className="purple"> Nahuel Sanz </b>
@@ -74,7 +125,7 @@ function home() {
             </p>
           </Col>
           <Col md={5} className="imgContainer">
-            <img src={img} alt="imgPerfil" className="imgPerfil"></img>
+            <img src={imgPerfil} alt="imgPerfil" className="imgPerfil"></img>
           </Col>
         </Row>
         <div style={{ marginTop: "5em" }}></div>
@@ -102,7 +153,7 @@ function home() {
                   rel="noreferrer"
                   className="purple  home-social-icons"
                 >
-                  <i class="bi bi-facebook"></i>
+                  <i className="bi bi-facebook"></i>
                 </a>
               </li>
               <li className="social-icons">

@@ -25,7 +25,7 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
+  display: block;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -36,22 +36,22 @@ h1 {
   line-height: 1.1;
 }
 
-button {
+.button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: rgb(218, 32, 218);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.5s;
 }
-button:hover {
+.button:hover {
   border-color: #646cff;
 }
-button:focus,
-button:focus-visible {
+.button:focus,
+.button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
@@ -66,4 +66,311 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+body {
+  position: relative;
+  z-index: -1;
+  background-position: top center;
+  background-repeat: no-repeat;
+  color: white;
+  background-color: rgb(113, 35, 185);
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: -1;
+}
+
+/*Nav-Bar*/
+
+.navbarContainer {
+  background-color: transparent !important;
+  color: white;
+}
+.navbarContainer .nav-link,
+.navbarContainer .nav-brand,
+.navbarContainer .navbar-brand {
+  color: white;
+  margin-right: 2em;
+  font-size: larger;
+  position: relative;
+}
+.navbarContainer .nav-link.active {
+  color: white;
+}
+/* Estilo para subrayar los elementos al hacer hover */
+.navbarContainer .nav-link .bi {
+  margin-right: 5px;
+}
+
+/* Estilo para el texto en los elementos de Navbar */
+.navbarContainer .nav-link span {
+  margin-right: 1em;
+  position: relative; /* Agregamos posicionamiento relativo para poder posicionar el subrayado */
+}
+
+/* Estilo para el ícono del Navbar en la marca (Brand) */
+.navbarContainer .navBrand .imgLogo {
+  margin-right: 1em;
+}
+
+/* Estilo para subrayar los elementos al hacer hover */
+.navbarContainer .nav-link::before {
+  content: "";
+  position: absolute;
+  bottom: 3px; /* Ajusta el valor según el espacio deseado entre el texto y el subrayado */
+  left: 0;
+  width: 0; /* Inicialmente, el subrayado no es visible */
+  height: 5px; /* Ajusta el grosor deseado del subrayado */
+  background-color: violet; /* Color del subrayado */
+  border-radius: 2px; /* Agregamos bordes redondeados */
+  transition: width 0.5s ease-in; /* Aumentamos la duración de la transición */
+}
+
+.navbarContainer .nav-link:hover::before {
+  width: calc(
+    100% - 5px
+  ); /* Cuando se hace hover, el subrayado se expande para cubrir el texto y el icono */
+}
+
+.imgLogo {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.icon {
+  margin-right: 1em;
+}
+
+/*Home*/
+
+.purple {
+  color: rgb(218, 32, 218);
+}
+.home-social-icons {
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 2em;
+  background: rgba(255, 255, 255, 0.972);
+  border-radius: 50%;
+  transition: 0.5s;
+}
+.home-social-icons::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgb(18, 215, 215);
+  transition: 0.5s;
+  transform: scale(0.9);
+  z-index: -1;
+}
+
+.home-social-icons:hover {
+  color: rgb(18, 215, 215);
+  box-shadow: 0 0 1em rgb(11, 169, 169);
+  text-shadow: 0 0 1em rgb(11, 169, 169);
+}
+.social-icons {
+  display: inline-block;
+  padding-right: 1em;
+  padding-left: 0.5em;
+}
+.imgPerfil {
+  width: 12em;
+  height: 12em;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+.imgContainer {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.heading {
+  padding-bottom: 0.5em;
+}
+.custom-row {
+  padding-top: 10em;
+}
+.home-about-social,
+.home-about-description {
+  margin-top: 1em;
+  text-align: center;
+}
+.introduction {
+  margin-top: 3em;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink-caret {
+  50% {
+    border-color: transparent;
+  }
+}
+
+#job-title {
+  display: inline-block;
+  border-right: 0.15em solid #333; /* Efecto de cursor parpadeante */
+  animation: typing 3s steps(20), blink-caret 0.75s step-end infinite;
+  white-space: nowrap;
+  font-size: 2em;
+  font-style: italic;
+  font-weight: bolder;
+}
+
+/*About*/
+
+.tech-icons {
+  font-size: 4.5em;
+  margin: 15px;
+  padding: 10px;
+  opacity: 0.93;
+  border: 1.7px solid rgba(200, 137, 230, 0.637);
+  vertical-align: middle;
+  text-align: center;
+  border-radius: 5px;
+  display: table;
+  box-shadow: 4px 5px 4px 3px rgba(89, 4, 168, 0.137);
+  overflow: hidden;
+  transition: all 0.4s ease 0s;
+}
+
+@media (max-width: 767px) {
+  .tech-icons {
+    margin: 10px;
+  }
+}
+
+.tech-icons:hover {
+  transform: scale(1.2);
+  overflow: hidden;
+  border: 2.2px solid rgba(197, 115, 230, 0.883);
+}
+.tech-icon-images {
+  padding: 20px;
+  line-height: 1.6;
+}
+
+.about-section {
+  position: relative;
+}
+.particle-container {
+  position: absolute;
+}
+.row-more-myself {
+  justify-content: center;
+  padding: 10em;
+}
+.techRow {
+  justify-content: center;
+}
+/*Projects*/
+.project-section {
+  position: relative;
+  padding-top: 150px;
+  padding-bottom: 30px;
+  background-image: var(--section-background-color);
+}
+
+.project-card {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 25px;
+  padding-right: 25px;
+  height: auto;
+}
+
+.project-card-view {
+  box-shadow: 0 4px 5px 3px rgba(119, 53, 136, 0.459);
+  color: white;
+  background-color: transparent;
+  opacity: 0.9;
+  transition: all 0.5s ease 0s;
+  height: 100%;
+}
+
+.project-card-view:hover {
+  transform: scale(1.02);
+  overflow: hidden;
+  box-shadow: 0 4px 4px 5px rgb(11, 169, 169);
+}
+
+.card-img-top {
+  padding: 20px !important;
+  opacity: 0.8 !important;
+  border-radius: 15% !important;
+}
+
+.project-heading {
+  color: white !important;
+  font-size: 2.3em !important;
+  font-weight: 500 !important;
+  padding-top: 10px !important;
+}
+
+/*Resume*/
+
+.resume-container {
+  position: relative !important;
+  padding-top: 110px !important;
+  padding-bottom: 30px !important;
+  background-image: var(--section-background-color) !important;
+  color: white !important;
+}
+
+.resume {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  justify-content: center;
+}
+
+.resume-left {
+  padding-right: 80px !important;
+}
+
+.resume-right {
+  padding-left: 80px !important;
+}
+/*Footer*/
+
+.footer {
+  position: relative;
+  background-color: rgb(0, 0, 0, 0.5);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  align-items: center;
+  padding: 0.5em; /* Ajusta el espacio interno según tus preferencias */
+}
+
+.footer h3 {
+  font-size: 1em;
+}
+
+.social-icons,
+.footer-copywright {
+  text-align: center;
+  margin-top: 0.5em;
 }
