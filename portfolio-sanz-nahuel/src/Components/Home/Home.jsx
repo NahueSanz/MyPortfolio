@@ -2,6 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import imgPerfil from "../../assets/Foto.portfolio.jpeg";
 import imgBlueGuy from "../../assets/pc.guy.png";
 import { useState, useEffect } from "react";
+import Particles from "../Particles-background/particles-background";
 
 function home() {
   const jobTitles = ["Full Stack Developer", "Web Designer", "Problem Solver"];
@@ -47,6 +48,9 @@ function home() {
   return (
     <section>
       <Container fluid className="home-section" id="home">
+      <div className="particle-container">
+          <Particles />
+        </div>
         <Row className="justify-content-md-center custom-row">
           <Col md={7} className="home-about-description">
             <h1 className="heading">
